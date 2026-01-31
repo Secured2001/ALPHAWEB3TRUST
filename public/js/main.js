@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelBtn = document.getElementById('cancelBtn');
     const issueForm = document.getElementById('issueForm');
     const modalTitle = document.getElementById('modalTitle');
+    const issueTypeInput = document.getElementById('issueTypeInput');
 
     let selectedIssue = '';
 
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('click', () => {
             selectedIssue = card.dataset.issue;
             modalTitle.textContent = `Submit Issue Report - ${selectedIssue}`;
+            issueTypeInput.value = selectedIssue;
             issueModal.classList.add('active');
         });
     });
@@ -59,53 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === issueModal) {
             issueModal.classList.remove('active');
             issueForm.reset();
-        }
-    });
-
-    issueForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const submitBtn = issueForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-
-        const formData = {
-            issue_type: selectedIssue,
-            full_name: document.getElementById('fullName').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            description: document.getElementById('issueDescription').value,
-            wallet_address: document.getElementById('walletAddress').value,
-            transaction_hash: document.getElementById('transactionHash').value,
-            amount: document.getElementById('amountInvolved').value
-        };
-
-        try {
-            const response = await fetch('/api/submit-issue', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                alert('Your issue report has been submitted successfully. Our support team will contact you within 24 hours.');
-                issueModal.classList.remove('active');
-                issueForm.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            } else {
-                throw new Error(result.error || 'Submission failed');
-            }
-        } catch (error) {
-            console.error('Error submitting issue:', error);
-            alert('An error occurred while submitting your report. Please try again.');
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
         }
     });
 
