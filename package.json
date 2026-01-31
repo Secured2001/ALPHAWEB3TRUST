@@ -1,0 +1,14 @@
+{
+  "name": "alphaweb3trust-chain",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'Build successful'",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

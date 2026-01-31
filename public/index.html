@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphaweb3trust-chain - Enterprise Web3 Security Platform</title>
+
+    <meta name="description" content="Alphaweb3trust-chain: The world's most advanced Web3 security assistance platform. End-to-end encrypted wallet recovery, transaction support, and crypto security solutions powered by quantum-resistant infrastructure.">
+    <meta name="keywords" content="Web3 security, crypto wallet protection, blockchain security, wallet recovery, quantum encryption, crypto support">
+
+    <meta property="og:title" content="Alphaweb3trust-chain - Enterprise Web3 Security Platform">
+    <meta property="og:description" content="Military-grade Web3 security assistance platform for wallet, trading, and transaction resolution. Quantum-encrypted infrastructure protecting millions of digital assets.">
+    <meta property="og:image" content="https://i.imgur.com/1IOwH8A.jpeg">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alphaweb3trust-chain - Enterprise Web3 Security Platform">
+    <meta name="twitter:description" content="Military-grade Web3 security assistance platform for wallet, trading, and transaction resolution.">
+    <link rel="icon" href="https://i.imgur.com/u2pTfGx.png">
+    
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="language-selector" id="languageSelector">
+        <button class="language-btn" id="languageBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span id="currentLang">EN</span>
+        </button>
+    </div>
+
+    <div class="language-modal" id="languageModal">
+        <div class="language-modal-content">
+            <div class="language-modal-header">
+                <h3>Select Your Region</h3>
+                <button class="close-btn" id="closeLanguageModal">&times;</button>
+            </div>
+            <div class="language-grid">
+                <button class="language-option" data-lang="en">
+                    <span class="flag">🇺🇸</span>
+                    <span class="lang-name">English</span>
+                </button>
+                <button class="language-option" data-lang="es">
+                    <span class="flag">🇪🇸</span>
+                    <span class="lang-name">Español</span>
+                </button>
+                <button class="language-option" data-lang="fr">
+                    <span class="flag">🇫🇷</span>
+                    <span class="lang-name">Français</span>
+                </button>
+                <button class="language-option" data-lang="de">
+                    <span class="flag">🇩🇪</span>
+                    <span class="lang-name">Deutsch</span>
+                </button>
+                <button class="language-option" data-lang="zh">
+                    <span class="flag">🇨🇳</span>
+                    <span class="lang-name">中文</span>
+                </button>
+                <button class="language-option" data-lang="ja">
+                    <span class="flag">🇯🇵</span>
+                    <span class="lang-name">日本語</span>
+                </button>
+                <button class="language-option" data-lang="ko">
+                    <span class="flag">🇰🇷</span>
+                    <span class="lang-name">한국어</span>
+                </button>
+                <button class="language-option" data-lang="ru">
+                    <span class="flag">🇷🇺</span>
+                    <span class="lang-name">Русский</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                   <img src="https://i.imgur.com/u2pTfGx.png" height="60px" width="70px" alt="">
+                    <span class="logo-text">ALPHAWEB3TRUST</span>
+                </a>
+                <nav class="nav-items">
+                    <div class="nav-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span>QUANTUM ENCRYPTED</span>
+                    </div>
+                    <div class="nav-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>24/7 SUPPORT</span>
+                    </div>
+                    <div class="nav-badge">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span>ZERO COMPROMISE</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="security-grid"></div>
+            <div class="floating-keys"></div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">Enterprise-Grade Security Infrastructure</div>
+
+                    <h1 class="hero-title">
+                        Protect Your Digital <span class="highlight">Fortress</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        Alphaweb3trust-chain is the world's most advanced Web3 security assistance platform. Powered by military-grade quantum encryption and deployed across enterprise infrastructure, we help millions of crypto users recover wallets, resolve transactions, and secure their digital assets with zero compromise.
+                    </p>
+
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            <span>End-to-End Encryption</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Instant Resolution</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12l2 2 4-4m7 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span>99.99% Uptime SLA</span>
+                        </div>
+                    </div>
+
+                    <a href="/connect-wallet" class="btn btn-primary btn-hero">
+                        <span>Get Started</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="issues-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Choose Your Recovery Path</h2>
+                    <p class="section-subtitle">Select the issue category that best matches your situation. Our AI-powered diagnostic engine will guide you through resolution with military-precision accuracy.</p>
+                </div>
+
+                <div class="issues-grid">
+                    <!-- <div class="issue-card" data-issue="Dashboard">
+                        <div class="issue-icon-container">
+                            <img src="" alt="Dashboard Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Dashboard Access</h3>
+                        <p class="issue-description">Regain immediate access to your wallet dashboard and view all account operations in real-time</p>
+                    </div> -->
+
+                    <div class="issue-card" data-issue="Swap / Exchange">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/NU3L9Yo.png" alt="Swap Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Swap & Exchange</h3>
+                        <p class="issue-description">Resolve failed token swaps, exchange errors, and currency conversion issues instantly</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="NFT Mint">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/z6LKhbH.jpeg" alt="NFT Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">NFT Minting</h3>
+                        <p class="issue-description">Support for digital asset creation, blockchain uploads, and NFT generation workflows</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="Connect to Dapps">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/WGsTnwn.png" alt="DApp Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">DApp Connections</h3>
+                        <p class="issue-description">Fix connection failures to decentralized applications, protocols, and blockchain services</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="Login Issues">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/Xp31oY7.png" alt="Login Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Authentication</h3>
+                        <p class="issue-description">Resolve login failures, password recovery, and multi-factor authentication complications</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="Missing Funds">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/A9K3ZoH.png" alt="Funds Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Missing Funds</h3>
+                        <p class="issue-description">Trace and recover lost cryptocurrency, unreported transactions, and phantom transfers</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="High Fees">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/GTdUnBw.png" alt="Gas Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Gas Optimization</h3>
+                        <p class="issue-description">Understand and reduce excessive gas fees through advanced transaction optimization</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="Migrate">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/T6rjcwQ.png" alt="Migration Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Asset Migration</h3>
+                        <p class="issue-description">Safely transfer assets between wallets, blockchains, and platforms with zero loss</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="Transaction Delay">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/M994FqD.png" alt="Transaction Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Pending Transactions</h3>
+                        <p class="issue-description">Resolve stuck, pending, or delayed blockchain transactions with accelerated processing</p>
+                    </div>
+
+                    <!-- <div class="issue-card" data-issue="Issues With Trading Wallet">
+                        <div class="issue-icon-container">
+                            <img src="" alt="Trading Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Trading Wallets</h3>
+                        <p class="issue-description">Fix exchange wallet integration, trading platform connectivity, and balance synchronization</p>
+                    </div> -->
+
+                    <div class="issue-card" data-issue="Unable to Purchase Coins">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/NRiJoj1.png" alt="Purchase Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Purchase Failures</h3>
+                        <p class="issue-description">Resolve payment method issues, verification blocks, and cryptocurrency purchase errors</p>
+                    </div>
+
+                    <div class="issue-card" data-issue="Locked Account">
+                        <div class="issue-icon-container">
+                            <img src="https://i.imgur.com/tWrrFwi.png" alt="Account Icon" class="issue-image">
+                        </div>
+                        <h3 class="issue-title">Account Recovery</h3>
+                        <p class="issue-description">Regain access to locked, suspended, or restricted cryptocurrency wallet accounts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- 
+        <section class="trust-section">
+            <div class="container">
+                <h2 class="section-label">Trusted by Security-First Enterprises</h2>
+                <div class="trust-metrics">
+                    <div class="metric">
+                        <div class="metric-number" data-target="10000000" data-suffix="+">0</div>
+                        <div class="metric-label">Digital Assets Protected</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number" data-target="500000" data-suffix="+">0</div>
+                        <div class="metric-label">Users Recovered</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number" data-target="99.99" data-suffix="%">0</div>
+                        <div class="metric-label">Recovery Success Rate</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-number" data-target="24" data-suffix="/7">0</div>
+                        <div class="metric-label">Enterprise Support</div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-link">Terms & Conditions</a>
+                <span class="footer-divider">|</span>
+                <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="issueModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Submit Issue Report</h3>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <form id="issueForm" class="modal-form" action="">
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="optional">(Optional)</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                </div>
+
+                <div class="form-group">
+                    <label for="issueDescription">Issue Description <span class="required">*</span></label>
+                    <textarea id="issueDescription" name="issueDescription" rows="5" placeholder="Provide a detailed description of the issue you're experiencing. Include any error messages, transaction IDs, or relevant context..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="walletAddress">Wallet Address <span class="optional">(Optional)</span></label>
+                        <input type="text" id="walletAddress" name="walletAddress" placeholder="0x...">
+                    </div>
+                    <div class="form-group">
+                        <label for="transactionHash">Transaction Hash <span class="optional">(Optional)</span></label>
+                        <input type="text" id="transactionHash" name="transactionHash" placeholder="0x...">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="amountInvolved">Amount Involved <span class="optional">(Optional)</span></label>
+                    <input type="text" id="amountInvolved" name="amountInvolved" placeholder="e.g., 5 ETH or $2,500 USD">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
