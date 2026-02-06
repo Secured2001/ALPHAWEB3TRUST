@@ -1,6 +1,25 @@
+:root {
+    --primary-bg: #050814;
+    --secondary-bg: #0D1629;
+    --tertiary-bg: #131F3A;
+    --card-bg: #1A2847;
+    --accent-blue: #00A8FF;
+    --accent-cyan: #00D9FF;
+    --accent-light: #1AE8FF;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A8B9D1;
+    --text-muted: #6B7280;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+    --border: #1F3555;
+    --hover: #1F2E4A;
+}
+
 .connect-section {
-    padding: 80px 0 120px;
+    padding: clamp(60px, 12vw, 100px) 0 clamp(80px, 14vw, 140px);
     position: relative;
+    min-height: auto;
 }
 
 .connect-bg {
@@ -17,7 +36,7 @@
     background-position: 0 0, 50px 70px, 100px 150px;
     animation: bgShift 60s linear infinite;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 @keyframes bgShift {
@@ -32,23 +51,24 @@
 .connect-intro {
     position: relative;
     z-index: 1;
-    max-width: 900px;
-    margin: 0 auto 80px;
+    max-width: 950px;
+    margin: 0 auto clamp(60px, 10vw, 100px);
     text-align: center;
 }
 
 .connect-title {
-    font-size: 56px;
+    font-size: clamp(32px, 7vw, 64px);
     font-weight: 800;
     letter-spacing: -1.5px;
-    margin-bottom: 24px;
+    margin-bottom: clamp(16px, 3vw, 28px);
     animation: fadeIn 0.8s ease;
+    line-height: 1.1;
 }
 
 .connect-description {
-    font-size: 18px;
+    font-size: clamp(15px, 2.5vw, 18px);
     color: var(--text-secondary);
-    margin-bottom: 24px;
+    margin-bottom: clamp(20px, 3vw, 28px);
     line-height: 1.8;
     animation: fadeIn 0.8s ease 0.1s backwards;
 }
@@ -56,12 +76,14 @@
 .connect-security {
     background: linear-gradient(135deg, rgba(0, 168, 255, 0.08), rgba(0, 217, 255, 0.04));
     border: 1px solid rgba(0, 168, 255, 0.2);
-    border-radius: 16px;
-    padding: 28px;
-    font-size: 15px;
+    border-radius: clamp(12px, 3vw, 20px);
+    padding: clamp(20px, 3vw, 32px);
+    font-size: clamp(14px, 2.2vw, 16px);
     color: var(--text-secondary);
     line-height: 1.8;
     animation: fadeIn 0.8s ease 0.2s backwards;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 168, 255, 0.08);
 }
 
 .wallets-section {
@@ -70,40 +92,43 @@
 }
 
 .wallets-title {
-    font-size: 32px;
-    font-weight: 700;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 800;
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: clamp(8px, 2vw, 16px);
     animation: fadeIn 0.8s ease 0.3s backwards;
+    letter-spacing: -0.5px;
 }
 
 .wallets-subtitle {
     text-align: center;
     color: var(--text-secondary);
-    margin-bottom: 48px;
-    font-size: 16px;
+    margin-bottom: clamp(40px, 6vw, 60px);
+    font-size: clamp(14px, 2.5vw, 16px);
     animation: fadeIn 0.8s ease 0.4s backwards;
 }
 
 .wallets-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(160px, 30vw, 200px), 1fr));
+    gap: clamp(20px, 3.5vw, 32px);
+    animation: fadeIn 0.8s ease 0.5s backwards;
 }
 
 .wallet-card {
     background: var(--card-bg);
-    border: 2px solid var(--border);
-    border-radius: 20px;
-    padding: 32px 24px;
+    border: 1.5px solid var(--border);
+    border-radius: clamp(16px, 4vw, 24px);
+    padding: clamp(24px, 3vw, 40px) clamp(16px, 2.5vw, 28px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: clamp(12px, 2.5vw, 20px);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(8px);
 }
 
 .wallet-card::before {
@@ -115,8 +140,9 @@
     height: 4px;
     background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
     transform: scaleX(0);
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     transform-origin: left;
+    z-index: 2;
 }
 
 .wallet-card:hover::before {
@@ -126,58 +152,64 @@
 .wallet-card:hover {
     background: var(--hover);
     border-color: var(--accent-blue);
-    transform: translateY(-12px);
-    box-shadow: 0 24px 64px rgba(0, 168, 255, 0.25);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 28px 72px rgba(0, 168, 255, 0.25);
 }
 
 .wallet-logo-slot {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, rgba(0, 168, 255, 0.1), rgba(0, 217, 255, 0.05));
+    width: clamp(100px, 25vw, 140px);
+    height: clamp(100px, 25vw, 140px);
+    background: linear-gradient(135deg, rgba(0, 168, 255, 0.12), rgba(0, 217, 255, 0.06));
     border: 2px solid var(--border);
-    border-radius: 16px;
-    transition: all 0.3s ease;
+    border-radius: clamp(12px, 3vw, 18px);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 .wallet-logo-slot img {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
     object-position: center;
-    padding: 8px;
+    filter: drop-shadow(0 4px 12px rgba(0, 217, 255, 0.15));
 }
 
 .wallet-card:hover .wallet-logo-slot {
-    background: linear-gradient(135deg, rgba(0, 168, 255, 0.2), rgba(0, 217, 255, 0.1));
+    background: linear-gradient(135deg, rgba(0, 168, 255, 0.2), rgba(0, 217, 255, 0.12));
     border-color: var(--accent-cyan);
-    transform: scale(1.08);
+    transform: scale(1.12) rotateY(8deg);
+    box-shadow: 0 12px 32px rgba(0, 168, 255, 0.25);
 }
 
 .wallet-name {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: clamp(13px, 2.5vw, 16px);
+    font-weight: 700;
     color: var(--text-primary);
     text-align: center;
     line-height: 1.4;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1;
 }
 
 .modal-loading {
-    max-width: 500px;
+    max-width: clamp(350px, 90vw, 500px);
 }
 
 .loading-container {
     text-align: center;
-    padding: 20px;
+    padding: clamp(16px, 3vw, 24px);
 }
 
 .loading-spinner {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 32px;
+    width: clamp(60px, 15vw, 100px);
+    height: clamp(60px, 15vw, 100px);
+    margin: 0 auto clamp(20px, 4vw, 40px);
     border: 4px solid rgba(0, 168, 255, 0.2);
     border-top-color: var(--accent-cyan);
     border-radius: 50%;
@@ -191,38 +223,39 @@
 }
 
 .modal-loading h3 {
-    font-size: 28px;
-    margin-bottom: 16px;
+    font-size: clamp(22px, 5vw, 32px);
+    margin-bottom: clamp(12px, 2vw, 20px);
     color: var(--text-primary);
+    font-weight: 800;
 }
 
 .loading-text {
-    font-size: 16px;
+    font-size: clamp(14px, 2.2vw, 16px);
     color: var(--text-secondary);
-    margin-bottom: 20px;
+    margin-bottom: clamp(16px, 3vw, 24px);
 }
 
 .loading-notice {
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 14px);
     color: var(--text-muted);
     line-height: 1.7;
     background: linear-gradient(135deg, rgba(0, 168, 255, 0.05), transparent);
     border-left: 3px solid var(--accent-cyan);
-    padding: 16px;
+    padding: clamp(12px, 2.5vw, 20px);
     border-radius: 8px;
 }
 
 .modal-phrase {
-    max-width: 600px;
+    max-width: clamp(350px, 90vw, 650px);
 }
 
 .phrase-instruction {
-    font-size: 15px;
+    font-size: clamp(13px, 2.2vw, 15px);
     color: var(--text-secondary);
-    margin-bottom: 28px;
+    margin-bottom: clamp(20px, 3vw, 32px);
     line-height: 1.7;
     background: rgba(0, 217, 255, 0.05);
-    padding: 16px;
+    padding: clamp(12px, 2vw, 20px);
     border-radius: 12px;
     border-left: 3px solid var(--accent-cyan);
 }
@@ -230,46 +263,47 @@
 .phrase-form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: clamp(16px, 3vw, 28px);
 }
 
 .phrase-input-wrapper {
     background: var(--tertiary-bg);
     border: 2px solid var(--border);
-    border-radius: 16px;
-    padding: 16px;
-    min-height: 220px;
+    border-radius: clamp(12px, 3vw, 18px);
+    padding: clamp(12px, 2.5vw, 20px);
+    min-height: clamp(180px, 40vw, 280px);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: clamp(8px, 2vw, 16px);
     transition: all 0.3s ease;
 }
 
 .phrase-input-wrapper:focus-within {
     border-color: var(--accent-blue);
-    box-shadow: 0 0 0 4px rgba(0, 168, 255, 0.1);
+    box-shadow: 0 0 0 4px rgba(0, 168, 255, 0.12);
 }
 
 .phrase-display {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    min-height: 40px;
+    gap: clamp(6px, 1.5vw, 12px);
+    min-height: clamp(30px, 8vw, 50px);
     align-content: flex-start;
 }
 
 .phrase-word {
-    background: linear-gradient(135deg, rgba(0, 168, 255, 0.1), rgba(0, 217, 255, 0.05));
+    background: linear-gradient(135deg, rgba(0, 168, 255, 0.12), rgba(0, 217, 255, 0.06));
     border: 1px solid var(--accent-blue);
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 14px;
-    font-weight: 600;
+    border-radius: clamp(6px, 1.5vw, 10px);
+    padding: clamp(6px, 1vw, 10px) clamp(10px, 2vw, 16px);
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 700;
     color: var(--accent-cyan);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: clamp(4px, 1vw, 8px);
     animation: wordBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
 }
 
 @keyframes wordBounce {
@@ -289,31 +323,33 @@
     color: var(--text-muted);
     cursor: pointer;
     padding: 0;
-    width: 18px;
-    height: 18px;
+    width: clamp(14px, 3vw, 20px);
+    height: clamp(14px, 3vw, 20px);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     transition: all 0.2s ease;
-    font-size: 14px;
+    font-size: clamp(12px, 2vw, 16px);
     font-weight: 700;
+    flex-shrink: 0;
 }
 
 .phrase-word-remove:hover {
     background: var(--error);
     color: white;
+    transform: scale(1.1);
 }
 
 .phrase-input {
     background: transparent;
     border: none;
     color: var(--text-primary);
-    font-size: 15px;
+    font-size: clamp(14px, 2.2vw, 16px);
     font-family: inherit;
     outline: none;
     flex: 1;
-    min-height: 40px;
+    min-height: clamp(32px, 6vw, 48px);
 }
 
 .phrase-input::placeholder {
@@ -322,12 +358,13 @@
 
 .word-count-info {
     text-align: center;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 700;
     color: var(--text-secondary);
-    padding: 12px;
+    padding: clamp(10px, 2vw, 16px);
     background: rgba(0, 168, 255, 0.05);
     border-radius: 8px;
+    letter-spacing: 0.3px;
 }
 
 .word-count-info span {
@@ -335,17 +372,17 @@
 }
 
 .modal-success {
-    max-width: 550px;
+    max-width: clamp(350px, 90vw, 600px);
     text-align: center;
 }
 
 .success-animation {
-    margin-bottom: 32px;
+    margin-bottom: clamp(20px, 4vw, 40px);
 }
 
 .success-checkmark {
-    width: 120px;
-    height: 120px;
+    width: clamp(100px, 25vw, 150px);
+    height: clamp(100px, 25vw, 150px);
     margin: 0 auto;
     perspective: 1000px;
 }
@@ -353,7 +390,19 @@
 .success-checkmark svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 8px 24px rgba(16, 185, 129, 0.3));
+    filter: drop-shadow(0 12px 36px rgba(16, 185, 129, 0.35));
+    animation: scaleInCheck 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scaleInCheck {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes drawCircle {
@@ -369,59 +418,64 @@
 }
 
 .modal-success h2 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 12px;
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 800;
+    margin-bottom: clamp(8px, 2vw, 16px);
     color: var(--text-primary);
+    letter-spacing: -0.5px;
 }
 
 .success-wallet-name {
-    font-size: 16px;
+    font-size: clamp(14px, 2.2vw, 16px);
     color: var(--text-secondary);
-    margin-bottom: 32px;
+    margin-bottom: clamp(24px, 4vw, 40px);
+    letter-spacing: 0.3px;
 }
 
 .reference-container {
     background: linear-gradient(135deg, rgba(0, 168, 255, 0.08), rgba(0, 217, 255, 0.04));
     border: 1px solid rgba(0, 168, 255, 0.2);
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 28px;
+    border-radius: clamp(12px, 3vw, 18px);
+    padding: clamp(20px, 3vw, 32px);
+    margin-bottom: clamp(20px, 4vw, 32px);
+    backdrop-filter: blur(10px);
 }
 
 .reference-label {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 800;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 16px;
+    letter-spacing: 0.8px;
+    margin-bottom: clamp(12px, 2vw, 20px);
 }
 
 .reference-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: clamp(8px, 2vw, 16px);
     background: var(--secondary-bg);
     border: 2px solid var(--success);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
+    border-radius: clamp(10px, 2.5vw, 14px);
+    padding: clamp(16px, 2.5vw, 24px);
+    margin-bottom: clamp(12px, 2vw, 20px);
     transition: all 0.3s ease;
+    flex-wrap: wrap;
 }
 
 .reference-box:hover {
     background: var(--tertiary-bg);
-    box-shadow: 0 12px 32px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 16px 48px rgba(16, 185, 129, 0.25);
+    transform: translateY(-2px);
 }
 
 .reference-number {
-    font-size: 28px;
+    font-size: clamp(20px, 4vw, 32px);
     font-weight: 800;
     color: var(--success);
-    letter-spacing: 2px;
-    font-family: 'Space Mono', monospace;
+    letter-spacing: clamp(1px, 0.5vw, 3px);
+    font-family: 'Space Mono', 'Courier New', monospace;
 }
 
 .copy-btn {
@@ -429,31 +483,38 @@
     border: none;
     color: var(--success);
     cursor: pointer;
-    padding: 8px;
+    padding: clamp(6px, 1.5vw, 12px);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+    flex-shrink: 0;
 }
 
 .copy-btn:hover {
-    background: rgba(16, 185, 129, 0.1);
-    transform: scale(1.1);
+    background: rgba(16, 185, 129, 0.12);
+    transform: scale(1.15);
+}
+
+.copy-btn svg {
+    width: clamp(14px, 3vw, 20px);
+    height: clamp(14px, 3vw, 20px);
 }
 
 .reference-hint {
-    font-size: 13px;
+    font-size: clamp(12px, 2vw, 13px);
     color: var(--text-muted);
     line-height: 1.6;
+    letter-spacing: 0.2px;
 }
 
 .success-footer {
-    font-size: 14px;
+    font-size: clamp(13px, 2.2vw, 15px);
     color: var(--success);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 24px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    margin-bottom: clamp(20px, 3vw, 32px);
     text-transform: uppercase;
 }
 
@@ -461,192 +522,39 @@
     width: 100%;
 }
 
-@media (max-width: 768px) {
-    .connect-title {
-        font-size: 36px;
-    }
-
-    .wallets-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 16px;
-    }
-
-    .wallet-card {
-        padding: 24px 16px;
-    }
-
-    .wallet-logo-slot {
-        width: 80px;
-        height: 80px;
-    }
-
-    .wallet-name {
-        font-size: 12px;
-    }
-
-    .modal-success {
-        max-width: 90vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .connect-title {
-        font-size: 28px;
-    }
-
-    .wallets-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 12px;
-    }
-
-    .wallet-card {
-        padding: 20px 12px;
-    }
-
-    .wallet-logo-slot {
-        width: 70px;
-        height: 70px;
-    }
-
-    .wallet-name {
-        font-size: 11px;
-    }
-
-    .reference-number {
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
-
-    .modal-content {
-        padding: 24px;
-    }
-}
-
-.wallets-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 28px;
-}
-
-.wallet-card {
-    background: var(--card-bg);
-    border: 2px solid var(--border);
-    border-radius: 20px;
-    padding: 40px 28px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.wallet-logo-slot {
-    width: 140px;
-    height: 140px;
-    background: linear-gradient(135deg, rgba(0, 168, 255, 0.1), rgba(0, 217, 255, 0.05));
-    border: 2px solid var(--border);
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.wallet-logo-slot img {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-    object-position: center;
-}
-
-.wallet-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-align: center;
-    line-height: 1.4;
-}
-
-/* Tablet view - 3 columns */
-@media (max-width: 1024px) {
-    .wallets-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-
-    .wallet-card {
-        padding: 36px 24px;
-    }
-
-    .wallet-logo-slot {
-        width: 130px;
-        height: 130px;
-    }
-}
-
-/* Mobile view - 3 columns (as you requested) */
-@media (max-width: 768px) {
-    .wallets-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-    }
-
-    .wallet-card {
-        padding: 24px 16px;
-    }
-
-    .wallet-logo-slot {
-        width: 100px;
-        height: 100px;
-    }
-
-    .wallet-name {
-        font-size: 12px;
-    }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-    .wallet-logo-slot {
-        width: 70px;
-        height: 70px;
-    }
-}
-
 .method-toggle {
     display: flex;
-    gap: 8px;
-    margin: 20px 0;
-    background: #f5f5f5;
-    padding: 4px;
-    border-radius: 8px;
+    gap: clamp(6px, 1.5vw, 12px);
+    margin: clamp(16px, 3vw, 24px) 0;
+    background: rgba(0, 217, 255, 0.08);
+    padding: clamp(4px, 1vw, 8px);
+    border-radius: clamp(8px, 2vw, 12px);
+    border: 1px solid rgba(0, 217, 255, 0.15);
 }
 
 .method-btn {
     flex: 1;
-    padding: 12px;
+    padding: clamp(10px, 1.5vw, 14px);
     background: transparent;
     border: none;
-    border-radius: 6px;
+    border-radius: clamp(6px, 1.5vw, 10px);
     cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    color: #666;
+    font-size: clamp(12px, 2vw, 14px);
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    color: var(--text-secondary);
+    letter-spacing: 0.3px;
 }
 
 .method-btn:hover {
-    background: #e0e0e0;
+    background: rgba(0, 217, 255, 0.12);
+    color: var(--text-primary);
 }
 
 .method-btn.method-active {
-    background: white;
-    color: #2563eb;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+    color: white;
+    box-shadow: 0 8px 24px rgba(0, 168, 255, 0.25);
 }
 
 .method-section {
@@ -655,10 +563,402 @@
 
 .method-section.active {
     display: block;
+    animation: fadeIn 0.3s ease;
 }
 
 .passkey-info {
-    margin-top: 8px;
-    font-size: 12px;
-    color: #999;
+    margin-top: clamp(8px, 1.5vw, 12px);
+    font-size: clamp(11px, 2vw, 13px);
+    color: var(--text-muted);
+    letter-spacing: 0.2px;
+}
+
+@media (max-width: 1200px) {
+    .wallets-grid {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 28vw, 180px), 1fr));
+        gap: clamp(16px, 3vw, 24px);
+    }
+
+    .wallet-card {
+        padding: clamp(20px, 2.5vw, 32px) clamp(14px, 2vw, 24px);
+    }
+
+    .wallet-logo-slot {
+        width: clamp(90px, 22vw, 120px);
+        height: clamp(90px, 22vw, 120px);
+    }
+}
+
+@media (max-width: 1024px) {
+    .connect-section {
+        padding: clamp(50px, 10vw, 80px) 0 clamp(60px, 12vw, 100px);
+    }
+
+    .wallets-grid {
+        grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 26vw, 160px), 1fr));
+        gap: clamp(14px, 2.5vw, 20px);
+    }
+
+    .wallet-card {
+        padding: clamp(18px, 2.2vw, 28px) clamp(12px, 1.8vw, 20px);
+    }
+
+    .wallet-logo-slot {
+        width: clamp(80px, 20vw, 110px);
+        height: clamp(80px, 20vw, 110px);
+    }
+
+    .wallet-name {
+        font-size: clamp(12px, 2.2vw, 14px);
+    }
+}
+
+@media (max-width: 768px) {
+    .connect-section {
+        padding: clamp(40px, 8vw, 60px) 0 clamp(50px, 10vw, 80px);
+    }
+
+    .connect-intro {
+        margin-bottom: clamp(40px, 8vw, 60px);
+    }
+
+    .connect-title {
+        font-size: clamp(26px, 6vw, 40px);
+        margin-bottom: clamp(12px, 2vw, 20px);
+    }
+
+    .connect-description,
+    .wallets-subtitle {
+        font-size: clamp(13px, 2.2vw, 15px);
+    }
+
+    .wallets-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(12px, 2vw, 16px);
+    }
+
+    .wallet-card {
+        padding: clamp(16px, 2vw, 24px) clamp(10px, 1.5vw, 16px);
+        gap: clamp(10px, 2vw, 14px);
+    }
+
+    .wallet-logo-slot {
+        width: clamp(70px, 18vw, 100px);
+        height: clamp(70px, 18vw, 100px);
+    }
+
+    .wallet-name {
+        font-size: clamp(11px, 2vw, 13px);
+    }
+
+    .phrase-input-wrapper {
+        min-height: clamp(150px, 35vw, 220px);
+    }
+
+    .loading-spinner {
+        width: clamp(50px, 12vw, 80px);
+        height: clamp(50px, 12vw, 80px);
+    }
+}
+
+@media (max-width: 640px) {
+    .connect-section {
+        padding: clamp(30px, 6vw, 50px) 0 clamp(40px, 8vw, 60px);
+    }
+
+    .connect-intro {
+        margin-bottom: clamp(30px, 6vw, 50px);
+    }
+
+    .connect-title {
+        font-size: clamp(22px, 5.5vw, 32px);
+        margin-bottom: 10px;
+    }
+
+    .connect-description {
+        font-size: clamp(12px, 2vw, 14px);
+        margin-bottom: 14px;
+    }
+
+    .connect-security {
+        font-size: clamp(12px, 2vw, 13px);
+        padding: clamp(14px, 2vw, 20px);
+        margin-bottom: 0;
+    }
+
+    .wallets-title {
+        font-size: clamp(20px, 4.5vw, 28px);
+        margin-bottom: 6px;
+    }
+
+    .wallets-subtitle {
+        font-size: clamp(12px, 2vw, 13px);
+        margin-bottom: clamp(28px, 5vw, 40px);
+    }
+
+    .wallets-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .wallet-card {
+        padding: clamp(14px, 1.5vw, 18px) clamp(8px, 1.2vw, 12px);
+        gap: 8px;
+        border-radius: 12px;
+    }
+
+    .wallet-logo-slot {
+        width: clamp(60px, 16vw, 85px);
+        height: clamp(60px, 16vw, 85px);
+        border-radius: 10px;
+    }
+
+    .wallet-name {
+        font-size: clamp(10px, 1.8vw, 11px);
+        line-height: 1.3;
+    }
+
+    .modal-loading h3 {
+        font-size: clamp(18px, 4.5vw, 26px);
+        margin-bottom: 8px;
+    }
+
+    .loading-text {
+        font-size: clamp(12px, 2vw, 14px);
+        margin-bottom: 12px;
+    }
+
+    .loading-notice {
+        font-size: clamp(11px, 1.8vw, 12px);
+        padding: clamp(10px, 1.5vw, 14px);
+    }
+
+    .phrase-instruction {
+        font-size: clamp(12px, 2vw, 13px);
+        margin-bottom: clamp(14px, 2vw, 20px);
+        padding: clamp(10px, 1.5vw, 14px);
+    }
+
+    .phrase-word {
+        font-size: clamp(11px, 1.8vw, 12px);
+        padding: clamp(4px, 0.8vw, 8px) clamp(8px, 1.5vw, 12px);
+        gap: 3px;
+    }
+
+    .phrase-input {
+        font-size: clamp(13px, 2vw, 14px);
+        min-height: clamp(28px, 5vw, 36px);
+    }
+
+    .word-count-info {
+        font-size: clamp(11px, 1.8vw, 12px);
+        padding: clamp(8px, 1.5vw, 12px);
+    }
+
+    .success-checkmark {
+        width: clamp(80px, 20vw, 120px);
+        height: clamp(80px, 20vw, 120px);
+    }
+
+    .modal-success h2 {
+        font-size: clamp(20px, 4vw, 28px);
+        margin-bottom: 6px;
+    }
+
+    .success-wallet-name {
+        font-size: clamp(12px, 2vw, 14px);
+        margin-bottom: clamp(16px, 3vw, 28px);
+    }
+
+    .reference-container {
+        padding: clamp(16px, 2.5vw, 24px);
+        margin-bottom: clamp(16px, 3vw, 24px);
+        border-radius: 12px;
+    }
+
+    .reference-label {
+        font-size: clamp(11px, 1.8vw, 12px);
+        margin-bottom: clamp(10px, 1.5vw, 14px);
+        letter-spacing: 0.6px;
+    }
+
+    .reference-box {
+        padding: clamp(12px, 2vw, 18px);
+        margin-bottom: clamp(10px, 1.5vw, 14px);
+        gap: 6px;
+    }
+
+    .reference-number {
+        font-size: clamp(16px, 3.5vw, 24px);
+        letter-spacing: clamp(0.5px, 0.3vw, 2px);
+    }
+
+    .copy-btn {
+        padding: clamp(4px, 1vw, 8px);
+    }
+
+    .copy-btn svg {
+        width: clamp(12px, 2.5vw, 16px);
+        height: clamp(12px, 2.5vw, 16px);
+    }
+
+    .reference-hint {
+        font-size: clamp(11px, 1.8vw, 12px);
+    }
+
+    .success-footer {
+        font-size: clamp(11px, 2vw, 13px);
+        margin-bottom: clamp(14px, 2.5vw, 20px);
+        letter-spacing: 0.4px;
+    }
+
+    .method-toggle {
+        gap: 4px;
+        margin: clamp(12px, 2vw, 16px) 0;
+        padding: 3px;
+        border-radius: 10px;
+    }
+
+    .method-btn {
+        padding: clamp(8px, 1.2vw, 11px);
+        font-size: clamp(11px, 1.8vw, 12px);
+        border-radius: 8px;
+    }
+
+    .passkey-info {
+        font-size: clamp(10px, 1.8vw, 11px);
+        margin-top: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .connect-section {
+        padding: clamp(24px, 5vw, 40px) 0 clamp(32px, 6vw, 50px);
+    }
+
+    .connect-intro {
+        margin-bottom: clamp(20px, 4vw, 32px);
+    }
+
+    .connect-title {
+        font-size: clamp(18px, 4.5vw, 26px);
+        margin-bottom: 8px;
+    }
+
+    .connect-description {
+        font-size: clamp(11px, 1.8vw, 12px);
+        margin-bottom: 10px;
+    }
+
+    .connect-security {
+        font-size: clamp(11px, 1.8vw, 12px);
+        padding: clamp(12px, 1.5vw, 16px);
+    }
+
+    .wallets-title {
+        font-size: clamp(18px, 4vw, 24px);
+        margin-bottom: 4px;
+    }
+
+    .wallets-subtitle {
+        font-size: clamp(11px, 1.8vw, 12px);
+        margin-bottom: clamp(20px, 4vw, 32px);
+    }
+
+    .wallets-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .wallet-card {
+        padding: clamp(12px, 1.2vw, 14px) clamp(6px, 1vw, 8px);
+        gap: 6px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+    }
+
+    .wallet-logo-slot {
+        width: clamp(50px, 14vw, 70px);
+        height: clamp(50px, 14vw, 70px);
+        border-radius: 8px;
+        padding: 4px;
+    }
+
+    .wallet-name {
+        font-size: clamp(9px, 1.6vw, 10px);
+    }
+
+    .modal-loading h3 {
+        font-size: clamp(16px, 4vw, 22px);
+        margin-bottom: 6px;
+    }
+
+    .loading-text {
+        font-size: clamp(11px, 1.8vw, 12px);
+        margin-bottom: 8px;
+    }
+
+    .phrase-input-wrapper {
+        min-height: clamp(130px, 30vw, 180px);
+        padding: 10px;
+        gap: 6px;
+    }
+
+    .phrase-word {
+        font-size: clamp(10px, 1.6vw, 11px);
+        padding: 3px 6px;
+        gap: 2px;
+    }
+
+    .phrase-input {
+        font-size: clamp(12px, 1.8vw, 13px);
+        min-height: clamp(24px, 5vw, 30px);
+    }
+
+    .reference-number {
+        font-size: clamp(14px, 3vw, 20px);
+        letter-spacing: clamp(0.3px, 0.2vw, 1.5px);
+    }
+
+    .method-toggle {
+        gap: 3px;
+        padding: 2px;
+    }
+
+    .method-btn {
+        padding: clamp(6px, 1vw, 8px);
+        font-size: clamp(10px, 1.6vw, 11px);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:disabled:hover {
+    transform: none !important;
 }
