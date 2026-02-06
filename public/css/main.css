@@ -490,7 +490,7 @@ body {
     border: 1px solid rgba(0, 217, 255, 0.35);
     border-radius: 50px;
     padding: clamp(10px, 2vw, 16px) clamp(20px, 3vw, 32px);
-    font-size: clamp(11px, 2.5vw, 13px);
+    font-size: clamp(8px, 2.5vw, 9px);
     font-weight: 700;
     color: var(--accent-cyan);
     text-transform: uppercase;
